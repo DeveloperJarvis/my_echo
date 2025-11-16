@@ -3,23 +3,43 @@
 
 int main(int argc, char *argv[])
 {
-	int i;											// index
-	int newline_check = strcmp(argv[1], "-n") == 0; // 1 is No newline, 0 is with newline
+	int newline = 1; // default: print newline
+	int start = 1;	 // index
 
+	if (argc > 1 && strcmp(argv[1], "-n") == 0)
+	{
+		if (argc == 2)
+		{
+			// Only -n provided -> treat as literal string
+			newline = 1;
+			start = 1;
+		}
+		else
+		{
+			// -n provided with other arguments -> suppress newline
+			newline = 0;
+			start = 2;
+		}
+	}
+
+	// No arguments provided
 	if (argc == 1)
 	{
-		printf("My echo is On.");
+		printf("My echo is On.\n");
+		return 0;
 	}
+	// Print arguments normally
 	else
 	{
-		for (i = newline_check == 1 ? 2 : 1; i < argc; i++)
+		for (int i = start; i < argc; i++)
 		{
 			printf("%s", argv[i]);
-			if (i < argc)
+			if (i + 1 < argc)
 				printf(" ");
 		}
 	}
-	if (newline_check == 0)
+
+	if (newline)
 		printf("\n");
 
 	return 0;
