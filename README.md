@@ -67,7 +67,7 @@ gcc -g -Wall -Wextra -o my_echo.out my_echo.c
 6. Add (C:\Program Files\Microsoft Visual Studio\18\<Version>\VC\Tools\Llvm\bin
    )
 
-### Compile using gcc
+### Compile using clang
 
 ```bash
 clang -c my_echo.c -o my_echo.o
